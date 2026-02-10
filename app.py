@@ -37,15 +37,12 @@ if teams.data:
             df_final = df_players
             df_final['calculated_value'] = 500
 
-        # ... (existing code above)
-
+   # Line 40
 df_final = df_final.drop_duplicates(subset=["name"])
+
+# Line 42
 # Display
 display = df_final[['name', 'position', 'calculated_value']].rename(columns={'calculated_value': 'NIL Value'})
 display = display.sort_values('NIL Value', ascending=False)
-
-
-        st.metric("Total Roster Value", f"${display['NIL Value'].sum():,.0f}")
-        st.dataframe(display.style.format({'NIL Value': '${:,.2f}'}), use_container_width=True)
-    else:
-        st.info("No players found.")
+st.metric("Total Roster Value", f"${display['NIL Value'].sum():,.0f}")
+st.dataframe(display.style.format({'NIL Value': '${:,.2f}'}), use_container_width=True)
