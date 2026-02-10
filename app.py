@@ -37,6 +37,15 @@ if teams.data:
             df_final = df_players
             df_final['calculated_value'] = 500
 
+        # ... (existing code above)
+
+df_final = df_final.drop_duplicates(subset=["name"])
+# Display
+display = df_final[['name', 'position', 'calculated_value']].rename(columns={'calculated_value': 'NIL Value'})
+display = display.sort_values('NIL Value', ascending=False)
+
+# ... (existing code below)
+        
         # Display
         display = df_final[['name', 'position', 'calculated_value']].rename(columns={'calculated_value': 'NIL Value'})
         display = display.sort_values('NIL Value', ascending=False)
