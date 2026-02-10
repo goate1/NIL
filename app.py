@@ -44,11 +44,6 @@ df_final = df_final.drop_duplicates(subset=["name"])
 display = df_final[['name', 'position', 'calculated_value']].rename(columns={'calculated_value': 'NIL Value'})
 display = display.sort_values('NIL Value', ascending=False)
 
-# ... (existing code below)
-        
-        # Display
-        display = df_final[['name', 'position', 'calculated_value']].rename(columns={'calculated_value': 'NIL Value'})
-        display = display.sort_values('NIL Value', ascending=False)
 
         st.metric("Total Roster Value", f"${display['NIL Value'].sum():,.0f}")
         st.dataframe(display.style.format({'NIL Value': '${:,.2f}'}), use_container_width=True)
